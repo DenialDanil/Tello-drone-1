@@ -22,9 +22,12 @@ def run_tello_video(drone: Tello) -> None:
         while True:
             # Capture a frame from the drone's camera
             frame = drone.get_frame_read().frame
-            
+        
+            # Convert the frame from BGR to RGB format
+            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
             # Display the video feed
-            cv2.imshow("Frame", frame)
+            cv2.imshow("CAMERA", frame_rgb)
             
             # Handle key events
             key = cv2.waitKey(1) & 0xFF
